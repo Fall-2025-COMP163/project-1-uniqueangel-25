@@ -2,7 +2,9 @@ import pytest
 import sys
 import os
 
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # Import student's code
+
 try:
     from project1_starter import create_character, calculate_stats
 except ImportError:
