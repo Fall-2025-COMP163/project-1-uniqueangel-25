@@ -34,15 +34,125 @@ def create_character(name, character_class):
 
 def calculate_stats(character_class, level):
     """
-    Calculates base stats based on class and level
-    Returns: tuple of (strength, magic, health)
-    
-    Design your own formulas! Ideas:
+
     - Warriors: High strength, low magic, high health
     - Mages: Low strength, high magic, medium health  
     - Rogues: Medium strength, medium magic, low health
     - Clerics: Medium strength, high magic, high health
     """
+    strength = 0
+    magic = 0
+    health = 0
+
+    if character_class.lower() == "mage":
+        strength = 5 + level
+        magic = 80 + level * 2
+        health = 50 + level * 2
+
+    elif character_class.lower() == "warrior":
+        strength = 80 + level * 2
+        magic = 10 + level * 1
+        health = 80 + level * 3
+
+    elif character_class.lower() == "rogue":
+        strength = 50 + level * 2
+        magic = 50 + level * 2
+        health = 30 + level
+    elif character_class.lower() == "cleric":
+        strength = 50 + level * 2
+        magic = 80 + level * 2
+        health = 80 + level * 3
+    else:
+        print("No class given")
+        strength = 10
+        magic = 10
+        health = 10
+
+    return (strength, magic, health)
+    
+import os
+
+def save_character(character, filename):
+    
+    """
+    Saves character to text file in specific format
+    Returns: True if successful, False if error occurred
+    
+    Required file format:
+    Character Name: [name]
+    Class: [class]
+    Level: [level]
+    Strength: [strength]
+    Magic: [magic]
+    Health: [health]
+    Gold: [gold]
+    """
+    
+
+    text = (
+        f"Character Name: {character['name']}\n"
+        f"Class: {character['class']}\n"
+        f"Level: {character['level']}\n"
+        f"Strength: {character['strength']}\n"
+        f"Magic: {character['magic']}\n"
+        f"Health: {character['health']}\n"
+        f"Gold: {character['gold']}\n"
+        )
+    
+    directory = os.path.dirname(filename)
+    if directory and not os.path.exists(directory):
+        return False
+    
+    f = open(filename, "w", encoding='utf-8') 
+    f.write(text)
+    f.close()
+    
+    # We must assume True, as we cannot verify without try/except.
+    return True
+
+    # TODO: Implement this function
+    # Remember to handle file errors gracefully
+    
+import os
+
+def load_character(filename):
+    """
+    Loads character from text file
+    Returns: character dictionary if successful, None if file not found
+    """
+    
+    # Check for file existence (to pass FileNotFoundError test)
+    if not os.path.exists(filename):
+        return None
+        
+    # FIX: Use encoding='utf-8' here to read the file correctly
+    f = open(filename, "r", encoding='utf-8') 
+    lines = f.readlines()
+    f.close()
+
+    character = {}
+    mapping = {
+        "Character Name": "name",
+        "Class": "class",
+        "Level": "level",
+        "Strength": "strength",
+        "Magic": "magic",
+        "Health": "health",
+        "Gold": "gold"
+    }
+
+    for line in lines:
+        line = line.strip()
+        parts = line.split(": ")
+        if len(parts) == 2:
+            key_label, value = parts
+            
+            key = mapping[key_label]
+            if key in ["level", "strength", "magic", "health", "gold"]:
+                value = int(value)
+            character[key] = value
+
+    return character
     # TODO: Implement this function
     # Return a tuple: (strength, magic, health)
     pass
