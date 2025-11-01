@@ -28,8 +28,7 @@ def create_character(name, character_class):
                  }
     return char_dict
 
-    # TODO: Implement this function
-    # Remember to use calculate_stats() function for stat calculation
+
     pass
 
 def calculate_stats(character_class, level):
@@ -152,54 +151,23 @@ def load_character(filename):
             character[key] = value
 
     return character
-    # TODO: Implement this function
-    # Return a tuple: (strength, magic, health)
-    pass
-
-def save_character(character, filename):
-    """
-    Saves character to text file in specific format
-    Returns: True if successful, False if error occurred
-    
-    Required file format:
-    Character Name: [name]
-    Class: [class]
-    Level: [level]
-    Strength: [strength]
-    Magic: [magic]
-    Health: [health]
-    Gold: [gold]
-    """
-    # TODO: Implement this function
-    # Remember to handle file errors gracefully
-    pass
-
-def load_character(filename):
-    """
-    Loads character from text file
-    Returns: character dictionary if successful, None if file not found
-    """
-    # TODO: Implement this function
-    # Remember to handle file not found errors
-    pass
+ 
 
 def display_character(character):
     """
     Prints formatted character sheet
     Returns: None (prints to console)
     
-    Example output:
-    === CHARACTER SHEET ===
-    Name: Aria
-    Class: Mage
-    Level: 1
-    Strength: 5
-    Magic: 15
-    Health: 80
-    Gold: 100
     """
-    # TODO: Implement this function
-    pass
+    print("=== CHARACTER SHEET ===")
+    print(f"Name: {character['name']}")
+    print(f"Class: {character['class']}")
+    print(f"Level: {character['level']}")
+    print(f"Strength: {character['strength']}")
+    print(f"Magic: {character['magic']}")
+    print(f"Health: {character['health']}")
+    print(f"Gold: {character['gold']}")
+    
 
 def level_up(character):
     """
@@ -209,7 +177,7 @@ def level_up(character):
     """
     # TODO: Implement this function
     # Remember to recalculate stats for the new level
-    pass
+    
 
 # Main program area (optional - for testing your functions)
 if __name__ == "__main__":
