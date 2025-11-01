@@ -6,7 +6,7 @@ Date: 10.31.2025
 AI Usage: Handiling Errors and implementing the functions
 
 """
-
+#Create_character: 1st Function
 def create_character(name, character_class):
     """
     Creates a new character dictionary with calculated stats
@@ -19,7 +19,7 @@ def create_character(name, character_class):
     level = 1
     strength, magic, health = calculate_stats(character_class, level)
     char_dict = {"name": name,
-                 "class": charcter_class,
+                 "class": character_class,
                  "level": level,
                  "strength": strength,
                  "magic": magic,
@@ -30,7 +30,7 @@ def create_character(name, character_class):
 
 
     pass
-
+#Stats Calculation: 2nd Function
 def calculate_stats(character_class, level):
     """
 
@@ -70,7 +70,7 @@ def calculate_stats(character_class, level):
     return (strength, magic, health)
     
 import os
-
+#Saving character information: 3rd function
 def save_character(character, filename):
     
     """
@@ -112,7 +112,7 @@ def save_character(character, filename):
     # Remember to handle file errors gracefully
     
 import os
-
+#Function 4: Loading Character
 def load_character(filename):
     """
     Loads character from text file
@@ -152,7 +152,7 @@ def load_character(filename):
 
     return character
  
-
+#Display Character: 5th Function
 def display_character(character):
     """
     Prints formatted character sheet
@@ -168,7 +168,7 @@ def display_character(character):
     print(f"Health: {character['health']}")
     print(f"Gold: {character['gold']}")
     
-
+#Leveling recalculation: 6th Function
 def level_up(character):
     """
     Increases character level and recalculates stats
