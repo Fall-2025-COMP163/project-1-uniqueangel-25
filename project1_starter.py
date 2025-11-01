@@ -109,7 +109,6 @@ def save_character(character, filename):
     
     # We must assume True, as we cannot verify without try/except.
     return True
-
     # TODO: Implement this function
     # Remember to handle file errors gracefully
     
